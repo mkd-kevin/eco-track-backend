@@ -112,8 +112,12 @@ public class CollectionRequestController {
 
         String message = collectionRequestService.deleteCollectionRequest(id);
 
-        if (message.contains("successfully")) {
+        if (message.equals("Collection request deleted successfully")) {
             return ResponseEntity.ok(message);
+        }
+
+        if (message.equals("That collection request has waste records, delete them first")) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(message);
         }
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);

@@ -12,15 +12,19 @@ import org.springframework.transaction.annotation.Transactional;
 import com.ecotrack.domain.CollectionRequest;
 import com.ecotrack.domain.CollectionStatus;
 import com.ecotrack.repository.CollectionRequestRepository;
+import com.ecotrack.repository.WasteRecordRepository;
 
 @Service
 public class CollectionRequestService {
 
     private final CollectionRequestRepository collectionRequestRepository;
+    private final WasteRecordRepository wasteRecordRepository;
 
     public CollectionRequestService(
-            CollectionRequestRepository collectionRequestRepository) {
+            CollectionRequestRepository collectionRequestRepository,
+            WasteRecordRepository wasteRecordRepository) {
         this.collectionRequestRepository = collectionRequestRepository;
+        this.wasteRecordRepository = wasteRecordRepository;
     }
 
     @Transactional
@@ -119,7 +123,18 @@ public class CollectionRequestService {
                 collectionRequestRepository.findById(id);
 
         if (existingCollectionRequest.isPresent()) {
-            collectionRequestRepository.delete(existingCollectionRequest.get());
+            CollectionRequest collectionRequest =
+                    existingCollectionRequest.get();
+
+            boolean hasWasteRecords =
+                    wasteRecordRepository.existsByCollectionRequest(collectionRequest);
+
+            if (hasWasteRecords) {
+                return "That collection request has waste records, delete them first";
+            }
+
+            collectionRequestRepository.delete(collectionRequest);
+
             return "Collection request deleted successfully";
         }
 
