@@ -26,7 +26,6 @@ public interface CollectionRequestRepository extends JpaRepository<CollectionReq
             CollectionStatus status
     );
 
-    
     @Query("""
             SELECT c.status, COUNT(c)
             FROM CollectionRequest c
@@ -34,7 +33,6 @@ public interface CollectionRequestRepository extends JpaRepository<CollectionReq
             """)
     List<Object[]> countCollectionRequestsByStatus();
 
-    
     @Modifying
     @Query("""
             UPDATE CollectionRequest c
@@ -47,4 +45,8 @@ public interface CollectionRequestRepository extends JpaRepository<CollectionReq
             @Param("collectorId") UUID collectorId,
             @Param("date") LocalDate date
     );
+
+    long countByRequestDate(LocalDate requestDate);
+
+    long countByStatus(CollectionStatus status);
 }

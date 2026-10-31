@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,29 +28,23 @@ public class CollectionRequestService {
         this.collectionRequestRepository = collectionRequestRepository;
         this.wasteRecordRepository = wasteRecordRepository;
     }
-
     @Transactional
     public String saveCollectionRequest(CollectionRequest collectionRequest) {
 
         if (collectionRequest.getRequestDate().isBefore(LocalDate.now())) {
             return "Collection request date cannot be in the past";
         }
-
         boolean existingRequest =
                 collectionRequestRepository.existsByCollectorIdAndRequestDateAndStatusNot(
                         collectionRequest.getCollector().getId(),
                         collectionRequest.getRequestDate(),
                         CollectionStatus.CANCELLED
                 );
-
         if (existingRequest) {
             return "Collector already has a collection on that date";
         }
-
         collectionRequest.setStatus(CollectionStatus.SUBMITTED);
-
         collectionRequestRepository.save(collectionRequest);
-
         return "Collection request saved successfully";
     }
 
@@ -86,18 +82,14 @@ public class CollectionRequestService {
 
         return "Collection request status updated successfully";
     }
-
     public List<CollectionRequest> getAllCollectionRequests() {
         return collectionRequestRepository.findAll();
     }
-
     public Optional<CollectionRequest> getCollectionRequestById(UUID id) {
         return collectionRequestRepository.findById(id);
     }
-
     public String updateCollectionRequest(
             UUID id, CollectionRequest updatedCollectionRequest) {
-
         Optional<CollectionRequest> existingCollectionRequest =
                 collectionRequestRepository.findById(id);
 
@@ -111,10 +103,8 @@ public class CollectionRequestService {
             collectionRequest.setCollector(updatedCollectionRequest.getCollector());
 
             collectionRequestRepository.save(collectionRequest);
-
             return "Collection request updated successfully";
         }
-
         return "The collection request with that id does not exist";
     }
 
@@ -165,5 +155,9 @@ public class CollectionRequestService {
                                 collectorId, date);
 
         return cancelledCount + " collection requests cancelled";
+    }
+
+    public Page<CollectionRequest> getCollectionRequestsPage(Pageable pageable) {
+        return collectionRequestRepository.findAll(pageable);
     }
 }

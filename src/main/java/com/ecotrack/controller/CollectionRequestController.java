@@ -6,6 +6,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,7 +26,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ecotrack.domain.CollectionRequest;
 import com.ecotrack.domain.CollectionStatus;
 import com.ecotrack.service.CollectionRequestService;
-
 @RestController
 @RequestMapping("/api/collection-requests")
 public class CollectionRequestController {
@@ -106,7 +109,6 @@ public class CollectionRequestController {
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
     }
-
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteCollectionRequest(
             @PathVariable UUID id) {
@@ -123,7 +125,6 @@ public class CollectionRequestController {
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
     }
-
     @GetMapping("/by-status")
     public List<CollectionRequest> findRequestsByStatus(
             @RequestParam CollectionStatus status) {
@@ -134,10 +135,8 @@ public class CollectionRequestController {
     public List<CollectionRequest> findRequestsBetweenDates(
             @RequestParam String start,
             @RequestParam String end) {
-
         LocalDate startDate = LocalDate.parse(start);
         LocalDate endDate = LocalDate.parse(end);
-
         return collectionRequestService.findRequestsBetweenDates(startDate, endDate);
     }
 
@@ -145,15 +144,30 @@ public class CollectionRequestController {
     public List<Object[]> getCollectionRequestStatsByStatus() {
         return collectionRequestService.getCollectionRequestStatsByStatus();
     }
-
     @PatchMapping("/cancel-day")
     public String cancelCollectionRequestsByCollectorAndDate(
             @RequestParam UUID collectorId,
             @RequestParam String date) {
-
         LocalDate requestDate = LocalDate.parse(date);
-
         return collectionRequestService
                 .cancelCollectionRequestsByCollectorAndDate(collectorId, requestDate);
+    }
+    @GetMapping("/page")
+    public Page<CollectionRequest> getCollectionRequestsPage(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "5") int size,
+            @RequestParam(defaultValue = "requestDate,desc") String sort) {
+
+        String[] sortParams = sort.split(",");
+
+        Pageable pageable = PageRequest.of(
+                page,
+                size,
+                Sort.by(
+                        Sort.Direction.fromString(sortParams[1]),
+                        sortParams[0]
+                )
+        );
+        return collectionRequestService.getCollectionRequestsPage(pageable);
     }
 }
