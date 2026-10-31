@@ -1,4 +1,3 @@
-
 package com.ecotrack.repository;
 
 import java.time.LocalDate;
@@ -15,5 +14,11 @@ public interface CollectionRequestRepository extends JpaRepository<CollectionReq
     List<CollectionRequest> findByStatusOrderByRequestDateAsc(CollectionStatus status);
 
     List<CollectionRequest> findByRequestDateBetweenOrderByRequestDateAsc(LocalDate start, LocalDate end);
+
+    boolean existsByCollectorIdAndRequestDateAndStatusNot(
+            UUID collectorId,
+            LocalDate requestDate,
+            CollectionStatus status
+    );
 
 }

@@ -1,3 +1,4 @@
+
 package com.ecotrack.controller;
 
 import java.util.List;
@@ -8,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -45,6 +47,46 @@ public class CollectorController {
             @RequestParam String name) {
         return ResponseEntity.ok(
                 collectorService.findCollectorsByWasteTypeName(name));
+    }
+
+    @PutMapping("/{collectorId}/waste-types/{wasteTypeId}")
+    public ResponseEntity<String> addWasteTypeToCollector(
+            @PathVariable UUID collectorId,
+            @PathVariable UUID wasteTypeId) {
+
+        String message = collectorService.addWasteTypeToCollector(
+                collectorId, wasteTypeId);
+
+        if (message.equals("Waste type added to the collector")) {
+            return ResponseEntity.ok(message);
+        }
+
+        if (message.equals("The collector with that id does not exist")
+                || message.equals("That waste type does not exist")) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
+        }
+
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(message);
+    }
+
+    @PatchMapping("/{collectorId}/collection-area")
+    public ResponseEntity<String> changeCollectorCollectionArea(
+            @PathVariable UUID collectorId,
+            @RequestParam int areaNumber) {
+
+        String message = collectorService.changeCollectorCollectionArea(
+                collectorId, areaNumber);
+
+        if (message.equals("Collection area changed successfully")) {
+            return ResponseEntity.ok(message);
+        }
+
+        if (message.equals("The collector with that id does not exist")
+                || message.equals("The collection area with that areaNumber does not exist")) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
+        }
+
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(message);
     }
 
     @GetMapping("/{id}")

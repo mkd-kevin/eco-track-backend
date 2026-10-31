@@ -7,6 +7,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ecotrack.domain.CollectionRequest;
 import com.ecotrack.domain.CollectionStatus;
@@ -22,9 +23,64 @@ public class CollectionRequestService {
         this.collectionRequestRepository = collectionRequestRepository;
     }
 
+    @Transactional
     public String saveCollectionRequest(CollectionRequest collectionRequest) {
+
+        if (collectionRequest.getRequestDate().isBefore(LocalDate.now())) {
+            return "Collection request date cannot be in the past";
+        }
+
+        boolean existingRequest =
+                collectionRequestRepository.existsByCollectorIdAndRequestDateAndStatusNot(
+                        collectionRequest.getCollector().getId(),
+                        collectionRequest.getRequestDate(),
+                        CollectionStatus.CANCELLED
+                );
+
+        if (existingRequest) {
+            return "Collector already has a collection on that date";
+        }
+
+        collectionRequest.setStatus(CollectionStatus.SUBMITTED);
+
         collectionRequestRepository.save(collectionRequest);
+
         return "Collection request saved successfully";
+    }
+
+    @Transactional
+    public String updateCollectionRequestStatus(
+            UUID id, CollectionStatus newStatus) {
+
+        Optional<CollectionRequest> existingRequest =
+                collectionRequestRepository.findById(id);
+
+        if (existingRequest.isEmpty()) {
+            return "The collection request with that id does not exist";
+        }
+
+        CollectionRequest collectionRequest = existingRequest.get();
+
+        CollectionStatus currentStatus = collectionRequest.getStatus();
+
+        boolean validTransition =
+                (currentStatus == CollectionStatus.SUBMITTED
+                        && (newStatus == CollectionStatus.ASSIGNED
+                        || newStatus == CollectionStatus.CANCELLED))
+                ||
+                (currentStatus == CollectionStatus.ASSIGNED
+                        && (newStatus == CollectionStatus.COLLECTED
+                        || newStatus == CollectionStatus.CANCELLED));
+
+        if (!validTransition) {
+            return "Cannot change status from " + currentStatus
+                    + " to " + newStatus;
+        }
+
+        collectionRequest.setStatus(newStatus);
+        collectionRequestRepository.save(collectionRequest);
+
+        return "Collection request status updated successfully";
     }
 
     public List<CollectionRequest> getAllCollectionRequests() {
@@ -76,6 +132,7 @@ public class CollectionRequestService {
 
     public List<CollectionRequest> findRequestsBetweenDates(
             LocalDate start, LocalDate end) {
-        return collectionRequestRepository.findByRequestDateBetweenOrderByRequestDateAsc(start, end);
+        return collectionRequestRepository.findByRequestDateBetweenOrderByRequestDateAsc(
+                start, end);
     }
 }

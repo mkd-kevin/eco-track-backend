@@ -1,6 +1,8 @@
+
 package com.ecotrack.repository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,5 +14,7 @@ public interface CollectionAreaRepository extends JpaRepository<CollectionArea, 
 
     @Query("SELECT ca FROM CollectionArea ca WHERE NOT EXISTS (SELECT c FROM Collector c WHERE c.collectionArea = ca) ORDER BY ca.areaNumber ASC")
     List<CollectionArea> findFreeCollectionAreas();
+
+    Optional<CollectionArea> findByAreaNumber(int areaNumber);
 
 }

@@ -1,3 +1,4 @@
+
 package com.ecotrack.service;
 
 import java.util.ArrayList;
@@ -56,6 +57,67 @@ public class CollectorService {
 
     public List<Collector> findCollectorsByWasteTypeName(String name) {
         return collectorRepository.findCollectorsByWasteTypeName(name);
+    }
+
+    @Transactional
+    public String addWasteTypeToCollector(UUID collectorId, UUID wasteTypeId) {
+
+        Optional<Collector> existingCollector =
+                collectorRepository.findById(collectorId);
+
+        if (existingCollector.isEmpty()) {
+            return "The collector with that id does not exist";
+        }
+
+        Optional<WasteType> existingWasteType =
+                wasteTypeRepository.findById(wasteTypeId);
+
+        if (existingWasteType.isEmpty()) {
+            return "That waste type does not exist";
+        }
+
+        Collector collector = existingCollector.get();
+        WasteType wasteType = existingWasteType.get();
+
+        if (collector.getWasteTypes().contains(wasteType)) {
+            return "The collector already has that waste type";
+        }
+
+        collector.getWasteTypes().add(wasteType);
+        collectorRepository.save(collector);
+
+        return "Waste type added to the collector";
+    }
+
+    @Transactional
+    public String changeCollectorCollectionArea(UUID collectorId, int areaNumber) {
+
+        Optional<Collector> existingCollector =
+                collectorRepository.findById(collectorId);
+
+        if (existingCollector.isEmpty()) {
+            return "The collector with that id does not exist";
+        }
+
+        Optional<CollectionArea> existingArea =
+                collectionAreaRepository.findByAreaNumber(areaNumber);
+
+        if (existingArea.isEmpty()) {
+            return "The collection area with that areaNumber does not exist";
+        }
+
+        Collector collector = existingCollector.get();
+        CollectionArea collectionArea = existingArea.get();
+
+        if (collectorRepository.existsByCollectionAreaAndIdNot(
+                collectionArea, collectorId)) {
+            return "That collection area is taken by another collector";
+        }
+
+        collector.setCollectionArea(collectionArea);
+        collectorRepository.save(collector);
+
+        return "Collection area changed successfully";
     }
 
     @Transactional
