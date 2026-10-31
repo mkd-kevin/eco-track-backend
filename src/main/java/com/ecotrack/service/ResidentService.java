@@ -23,12 +23,15 @@ public class ResidentService {
         residentRepository.save(resident);
         return "Resident saved successfully";
     }
+
     public List<Resident> getAllResidents() {
         return residentRepository.findAll();
     }
+
     public Optional<Resident> getResidentById(UUID id) {
         return residentRepository.findById(id);
     }
+
     public String updateResident(UUID id, Resident updatedResident) {
         Optional<Resident> existingResident =
                 residentRepository.findById(id);
@@ -60,5 +63,9 @@ public class ResidentService {
         }
 
         return "The resident with that id does not exist";
+    }
+
+    public List<Resident> findResidentsByLastName(String lastName) {
+        return residentRepository.findByLastNameIgnoreCaseOrderByFirstNameAsc(lastName);
     }
 }

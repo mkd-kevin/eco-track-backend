@@ -1,6 +1,7 @@
 
 package com.ecotrack.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -8,6 +9,7 @@ import java.util.UUID;
 import org.springframework.stereotype.Service;
 
 import com.ecotrack.domain.CollectionRequest;
+import com.ecotrack.domain.CollectionStatus;
 import com.ecotrack.repository.CollectionRequestRepository;
 
 @Service
@@ -66,5 +68,14 @@ public class CollectionRequestService {
         }
 
         return "The collection request with that id does not exist";
+    }
+
+    public List<CollectionRequest> findRequestsByStatus(CollectionStatus status) {
+        return collectionRequestRepository.findByStatusOrderByRequestDateAsc(status);
+    }
+
+    public List<CollectionRequest> findRequestsBetweenDates(
+            LocalDate start, LocalDate end) {
+        return collectionRequestRepository.findByRequestDateBetweenOrderByRequestDateAsc(start, end);
     }
 }

@@ -1,6 +1,8 @@
 
 package com.ecotrack.controller;
 
+import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -13,9 +15,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ecotrack.domain.CollectionRequest;
+import com.ecotrack.domain.CollectionStatus;
 import com.ecotrack.service.CollectionRequestService;
 
 @RestController
@@ -87,4 +91,21 @@ public class CollectionRequestController {
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
     }
+
+    @GetMapping("/by-status")
+public List<CollectionRequest> findRequestsByStatus(
+        @RequestParam CollectionStatus status) {
+    return collectionRequestService.findRequestsByStatus(status);
+}
+
+@GetMapping("/between")
+public List<CollectionRequest> findRequestsBetweenDates(
+        @RequestParam String start,
+        @RequestParam String end) {
+
+    LocalDate startDate = LocalDate.parse(start);
+    LocalDate endDate = LocalDate.parse(end);
+
+    return collectionRequestService.findRequestsBetweenDates(startDate, endDate);
+}
 }

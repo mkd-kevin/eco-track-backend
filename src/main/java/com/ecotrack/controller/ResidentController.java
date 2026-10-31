@@ -1,6 +1,7 @@
 
 package com.ecotrack.controller;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -13,10 +14,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ecotrack.domain.Resident;
 import com.ecotrack.service.ResidentService;
+
 
 @RestController
 @RequestMapping("/api/residents")
@@ -75,4 +78,10 @@ public class ResidentController {
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
     }
+
+    @GetMapping("/by-last-name")
+public List<Resident> findResidentsByLastName(
+        @RequestParam String lastName) {
+    return residentService.findResidentsByLastName(lastName);
+}
 }
