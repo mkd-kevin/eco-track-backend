@@ -150,4 +150,20 @@ public class CollectionRequestService {
         return collectionRequestRepository.findByRequestDateBetweenOrderByRequestDateAsc(
                 start, end);
     }
+
+    public List<Object[]> getCollectionRequestStatsByStatus() {
+        return collectionRequestRepository.countCollectionRequestsByStatus();
+    }
+
+    @Transactional
+    public String cancelCollectionRequestsByCollectorAndDate(
+            UUID collectorId, LocalDate date) {
+
+        int cancelledCount =
+                collectionRequestRepository
+                        .cancelCollectionRequestsByCollectorAndDate(
+                                collectorId, date);
+
+        return cancelledCount + " collection requests cancelled";
+    }
 }

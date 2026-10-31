@@ -1,3 +1,4 @@
+
 package com.ecotrack.controller;
 
 import java.time.LocalDate;
@@ -138,5 +139,21 @@ public class CollectionRequestController {
         LocalDate endDate = LocalDate.parse(end);
 
         return collectionRequestService.findRequestsBetweenDates(startDate, endDate);
+    }
+
+    @GetMapping("/stats/by-status")
+    public List<Object[]> getCollectionRequestStatsByStatus() {
+        return collectionRequestService.getCollectionRequestStatsByStatus();
+    }
+
+    @PatchMapping("/cancel-day")
+    public String cancelCollectionRequestsByCollectorAndDate(
+            @RequestParam UUID collectorId,
+            @RequestParam String date) {
+
+        LocalDate requestDate = LocalDate.parse(date);
+
+        return collectionRequestService
+                .cancelCollectionRequestsByCollectorAndDate(collectorId, requestDate);
     }
 }
