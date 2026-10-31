@@ -1,4 +1,3 @@
-
 package com.ecotrack.controller;
 
 import java.util.List;
@@ -19,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ecotrack.domain.Resident;
 import com.ecotrack.service.ResidentService;
-
 
 @RestController
 @RequestMapping("/api/residents")
@@ -54,6 +52,21 @@ public class ResidentController {
                 .body("The resident with that id does not exist");
     }
 
+    @GetMapping("/of-collector/{collectorId}")
+    public ResponseEntity<?> findResidentsByCollectorId(
+            @PathVariable UUID collectorId) {
+
+        Optional<List<Resident>> residents =
+                residentService.findResidentsByCollectorId(collectorId);
+
+        if (residents.isPresent()) {
+            return ResponseEntity.ok(residents.get());
+        }
+
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body("The collector with that id does not exist");
+    }
+
     @PutMapping("/update/{id}")
     public ResponseEntity<String> updateResident(
             @PathVariable UUID id,
@@ -80,8 +93,8 @@ public class ResidentController {
     }
 
     @GetMapping("/by-last-name")
-public List<Resident> findResidentsByLastName(
-        @RequestParam String lastName) {
-    return residentService.findResidentsByLastName(lastName);
-}
+    public List<Resident> findResidentsByLastName(
+            @RequestParam String lastName) {
+        return residentService.findResidentsByLastName(lastName);
+    }
 }

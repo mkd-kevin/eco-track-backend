@@ -1,6 +1,6 @@
-
 package com.ecotrack.controller;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ecotrack.domain.Collector;
@@ -37,6 +38,13 @@ public class CollectorController {
     @GetMapping("/all")
     public ResponseEntity<?> getAllCollectors() {
         return ResponseEntity.ok(collectorService.getAllCollectors());
+    }
+
+    @GetMapping("/by-waste-type")
+    public ResponseEntity<List<Collector>> findCollectorsByWasteTypeName(
+            @RequestParam String name) {
+        return ResponseEntity.ok(
+                collectorService.findCollectorsByWasteTypeName(name));
     }
 
     @GetMapping("/{id}")

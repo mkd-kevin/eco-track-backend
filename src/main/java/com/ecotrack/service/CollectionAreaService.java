@@ -31,6 +31,10 @@ public class CollectionAreaService {
         return collectionAreaRepository.findById(id);
     }
 
+    public List<CollectionArea> findFreeCollectionAreas() {
+        return collectionAreaRepository.findFreeCollectionAreas();
+    }
+
     public String updateCollectionArea(UUID id, CollectionArea updatedCollectionArea) {
         Optional<CollectionArea> existingCollectionArea =
                 collectionAreaRepository.findById(id);

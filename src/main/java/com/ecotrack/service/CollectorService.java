@@ -1,4 +1,3 @@
-
 package com.ecotrack.service;
 
 import java.util.ArrayList;
@@ -53,6 +52,10 @@ public class CollectorService {
 
     public Optional<Collector> getCollectorById(UUID id) {
         return collectorRepository.findById(id);
+    }
+
+    public List<Collector> findCollectorsByWasteTypeName(String name) {
+        return collectorRepository.findCollectorsByWasteTypeName(name);
     }
 
     @Transactional

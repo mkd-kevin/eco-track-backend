@@ -1,4 +1,3 @@
-
 package com.ecotrack.service;
 
 import java.util.List;
@@ -8,15 +7,20 @@ import java.util.UUID;
 import org.springframework.stereotype.Service;
 
 import com.ecotrack.domain.Resident;
+import com.ecotrack.repository.CollectorRepository;
 import com.ecotrack.repository.ResidentRepository;
 
 @Service
 public class ResidentService {
 
     private final ResidentRepository residentRepository;
+    private final CollectorRepository collectorRepository;
 
-    public ResidentService(ResidentRepository residentRepository) {
+    public ResidentService(
+            ResidentRepository residentRepository,
+            CollectorRepository collectorRepository) {
         this.residentRepository = residentRepository;
+        this.collectorRepository = collectorRepository;
     }
 
     public String saveResident(Resident resident) {
@@ -30,6 +34,16 @@ public class ResidentService {
 
     public Optional<Resident> getResidentById(UUID id) {
         return residentRepository.findById(id);
+    }
+
+    public Optional<List<Resident>> findResidentsByCollectorId(UUID collectorId) {
+        if (!collectorRepository.existsById(collectorId)) {
+            return Optional.empty();
+        }
+
+        return Optional.of(
+                residentRepository.findResidentsByCollectorId(collectorId)
+        );
     }
 
     public String updateResident(UUID id, Resident updatedResident) {

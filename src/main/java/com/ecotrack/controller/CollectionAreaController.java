@@ -1,6 +1,6 @@
-
 package com.ecotrack.controller;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -37,6 +37,11 @@ public class CollectionAreaController {
     @GetMapping("/all")
     public ResponseEntity<?> getAllCollectionAreas() {
         return ResponseEntity.ok(collectionAreaService.getAllCollectionAreas());
+    }
+
+    @GetMapping("/free")
+    public ResponseEntity<List<CollectionArea>> getFreeCollectionAreas() {
+        return ResponseEntity.ok(collectionAreaService.findFreeCollectionAreas());
     }
 
     @GetMapping("/{id}")
