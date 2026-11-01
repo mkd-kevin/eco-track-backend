@@ -1,0 +1,2214 @@
+{
+  "info": {
+    "_postman_id": "5295f168-af50-4a02-9c8b-4d7d3a23b5ab",
+    "name": "EcoTrack API Testing",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "58439287",
+    "_collection_link": "https://go.postman.co/collection/58439287-5295f168-af50-4a02-9c8b-4d7d3a23b5ab?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "0 Seed Data",
+      "item": [
+        {
+          "name": "Collection Requests",
+          "item": [
+            {
+              "name": "Create Collection Requests",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"requestDate\": \"2026-11-20\",\r\n    \"status\": \"ASSIGNED\",\r\n    \"location\": \"Collection Area 3\",\r\n    \"resident\": {\r\n        \"id\": \"6204fdd5-f012-4866-8818-368feaaaf1a7\"\r\n    },\r\n    \"collector\": {\r\n        \"id\": \"cfb5eb0e-225c-4cff-bb30-8d88e3ffde65\"\r\n    }\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/collection-requests/save",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "collection-requests",
+                    "save"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get All collection Requests",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/collection-requests/all",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "collection-requests",
+                    "all"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Collection Requests By ID",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/collection-requests/bddac71f-8438-48ef-885a-2b6d0e5cbd4c",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "collection-requests",
+                    "bddac71f-8438-48ef-885a-2b6d0e5cbd4c"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Test Collection Requests",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"requestDate\": \"2026-10-21\",\r\n    \"status\": \"ASSIGNED\",\r\n    \"location\": \"Collection Area 3\",\r\n    \"resident\": {\r\n        \"id\": \"6204fdd5-f012-4866-8818-368feaaaf1a7\"\r\n    },\r\n    \"collector\": {\r\n        \"id\": \"cfb5eb0e-225c-4cff-bb30-8d88e3ffde65\"\r\n    }\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/collection-requests/bddac71f-8438-48ef-885a-2b6d0e5cbd4c",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "collection-requests",
+                    "bddac71f-8438-48ef-885a-2b6d0e5cbd4c"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Collection Requests",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"requestDate\": \"2026-10-20\",\r\n    \"status\": \"SUBMITTED\",\r\n    \"location\": \"Collection Area 3\",\r\n    \"resident\": {\r\n        \"id\": \"6204fdd5-f012-4866-8818-368feaaaf1a7\"\r\n    },\r\n    \"collector\": {\r\n        \"id\": \"cfb5eb0e-225c-4cff-bb30-8d88e3ffde65\"\r\n    }\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/collection-requests/delete/89cc8cd3-13aa-445f-8029-1743651fe567",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "collection-requests",
+                    "delete",
+                    "89cc8cd3-13aa-445f-8029-1743651fe567"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Create WasteType",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Electronic\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/waste-types/save",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "waste-types",
+                "save"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All WasteTypes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/waste-types/all",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "waste-types",
+                "all"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get WasteType By ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update WasteType",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Organic\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/waste-types/41613618-4ea2-4689-8d0c-5692e60620c1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "waste-types",
+                "41613618-4ea2-4689-8d0c-5692e60620c1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete WasteType",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/waste-types/delete/928ab522-54a1-4e2e-8c8c-3b3b03a50930",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "waste-types",
+                "delete",
+                "928ab522-54a1-4e2e-8c8c-3b3b03a50930"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Collection Area 1",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"areaNumber\": 1,\r\n  \"name\": \"Collection Area 1\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/collection-areas/save",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "collection-areas",
+                "save"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Collection Areas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/collection-areas/all",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "collection-areas",
+                "all"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Collection Area",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"areaNumber\": 2,\r\n    \"name\": \"Collection Area 2 Updated\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/collection-areas/1c7d4dc8-eaa4-4f7d-b141-6562d404c1e5",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "collection-areas",
+                "1c7d4dc8-eaa4-4f7d-b141-6562d404c1e5"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Collection Area",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Collector 1.",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"firstName\": \"John\",\r\n  \"lastName\": \"Doe\",\r\n  \"phone\": \"0781234567\",\r\n  \"collectionArea\": {\r\n    \"id\": \"039ac1ff-5cea-4433-8676-fe525c1b53c3\"\r\n  },\r\n  \"wasteTypes\": [\r\n    {\r\n      \"id\": \"c50715f1-5643-43a5-9e97-04b16a2188bc\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/collectors/save",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "collectors",
+                "save"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Collectors",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/collectors/all",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "collectors",
+                "all"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Test GET Collector By ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/collectors/86746930-6700-4c2b-8178-a4c34dc0bb53",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "collectors",
+                "86746930-6700-4c2b-8178-a4c34dc0bb53"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Test UPDATE Collector",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"firstName\": \"John\",\r\n  \"lastName\": \"Doe\",\r\n  \"phone\": \"0789999999\",\r\n  \"collectionArea\": {\r\n    \"id\": \"039ac1ff-5cea-4433-8676-fe525c1b53c3\"\r\n  },\r\n  \"wasteTypes\": [\r\n    {\r\n      \"id\": \"c50715f1-5643-43a5-9e97-04b16a2188bc\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/collectors/86746930-6700-4c2b-8178-a4c34dc0bb53",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "collectors",
+                "86746930-6700-4c2b-8178-a4c34dc0bb53"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Test DELETE Collector",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/collectors/delete/be305822-e1bf-4cc1-8d56-2959d5aa9e46",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "collectors",
+                "delete",
+                "be305822-e1bf-4cc1-8d56-2959d5aa9e46"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Resident",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"firstName\": \"Samuel\",\r\n  \"lastName\": \"Habimana\",\r\n  \"houseNumber\": \"H-109\",\r\n  \"phone\": \"0780000005\",\r\n  \"email\": \"samuel@example.com\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/residents/save",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "residents",
+                "save"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Residents",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Test GET Resident By ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/residents/a8230d77-b1b3-4f76-96ef-34998a189368",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "residents",
+                "a8230d77-b1b3-4f76-96ef-34998a189368"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Test UPDATE Resident",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"firstName\": \"Alex\",\r\n    \"lastName\": \"Uwase\",\r\n    \"houseNumber\": \"H-105\",\r\n    \"phone\": \"0781111111\",\r\n    \"email\": \"alex.uwase@example.com\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/residents/a8230d77-b1b3-4f76-96ef-34998a189368",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "residents",
+                "a8230d77-b1b3-4f76-96ef-34998a189368"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Test DELETE Resident",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/residents/delete/a8230d77-b1b3-4f76-96ef-34998a189368",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "residents",
+                "delete",
+                "a8230d77-b1b3-4f76-96ef-34998a189368"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Collection Request",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"requestDate\": \"2026-10-31\",\r\n  \"status\": \"SUBMITTED\",\r\n  \"location\": \"Collection Area 2\",\r\n  \"resident\": {\r\n    \"id\": \"259052ae-a5e8-4b95-bb4d-42aed1ca53b4\"\r\n  },\r\n  \"collector\": {\r\n    \"id\": \"86746930-6700-4c2b-8178-a4c34dc0bb53\"\r\n  }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/collection-requests/save",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "collection-requests",
+                "save"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Collection Area By ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "New Request",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "0 - Seed Data",
+      "item": [
+        {
+          "name": "0.1 - Get All Waste Types",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "0.2 - Get All Collection Areas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "0.3 - Get All Collectors",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "0.4 - Get All Residents",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "0.5 - Get All Collection Requests",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "A - CRUD Operations",
+      "item": [
+        {
+          "name": "A2.1 - Waste Types",
+          "item": [
+            {
+              "name": "A2.1.1 — Save Waste Type",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": \"Plastic Test\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/waste-types/save",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "waste-types",
+                    "save"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "A2.1.2 - Get All Waste Types",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/waste-types/all",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "waste-types",
+                    "all"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "A2.1.3 - Get Waste Type by ID",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/waste-types/131bef00-0ec0-4204-8eb3-983751b14578",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "waste-types",
+                    "131bef00-0ec0-4204-8eb3-983751b14578"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "A2.1.5 - Delete Waste Type",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/waste-types/delete/131bef00-0ec0-4204-8eb3-983751b14578",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "waste-types",
+                    "delete",
+                    "131bef00-0ec0-4204-8eb3-983751b14578"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "A2.2 - Collection Areas",
+          "item": [
+            {
+              "name": "A2.2.1 — Save Collection Area",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"areaNumber\": 5,\r\n  \"name\": \"Test Collection Area\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/collection-areas/save",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "collection-areas",
+                    "save"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "A2.2.2 — Get Collection Area by ID",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/collection-areas/ef1cbb08-53ba-40dd-8df0-ec64a5bae5bb",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "collection-areas",
+                    "ef1cbb08-53ba-40dd-8df0-ec64a5bae5bb"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "New Request",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"areaNumber\": 5,\r\n  \"name\": \"Updated Test Collection Area\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/collection-areas/update/ef1cbb08-53ba-40dd-8df0-ec64a5bae5bb",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "collection-areas",
+                    "update",
+                    "ef1cbb08-53ba-40dd-8df0-ec64a5bae5bb"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "A2.2.4 — Delete Collection Area",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/collection-areas/delete/ef1cbb08-53ba-40dd-8df0-ec64a5bae5bb",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "collection-areas",
+                    "delete",
+                    "ef1cbb08-53ba-40dd-8df0-ec64a5bae5bb"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "A2.3 - Collectors",
+          "item": [
+            {
+              "name": "A2.3.1 - Save Collector",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"firstName\": \"Test\",\r\n  \"lastName\": \"Collector\",\r\n  \"phone\": \"0780000099\",\r\n  \"collectionArea\": {\r\n    \"id\": \"2a75b39a-b724-4061-93e9-f3d11a025e32\"\r\n  },\r\n  \"wasteTypes\": [\r\n    {\r\n      \"id\": \"5345adc5-48be-41ac-a389-974f74a1a1ac\"\r\n    }\r\n  ]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/collectors/save",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "collectors",
+                    "save"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "A2.3.2 - Get Collector by ID",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/collectors/b3e59d1f-3dd9-4655-ad95-c516d610df9c",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "collectors",
+                    "b3e59d1f-3dd9-4655-ad95-c516d610df9c"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "A2.3.3 - Update Collector",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"firstName\": \"Test\",\r\n  \"lastName\": \"Collector Updated\",\r\n  \"phone\": \"0780000088\",\r\n  \"collectionArea\": {\r\n    \"id\": \"2a75b39a-b724-4061-93e9-f3d11a025e32\"\r\n  },\r\n  \"wasteTypes\": [\r\n    {\r\n      \"id\": \"5345adc5-48be-41ac-a389-974f74a1a1ac\"\r\n    }\r\n  ]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/collectors/update/b3e59d1f-3dd9-4655-ad95-c516d610df9c",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "collectors",
+                    "update",
+                    "b3e59d1f-3dd9-4655-ad95-c516d610df9c"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "A2.3.4 - Delete Collector",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/collectors/delete/b3e59d1f-3dd9-4655-ad95-c516d610df9c",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "collectors",
+                    "delete",
+                    "b3e59d1f-3dd9-4655-ad95-c516d610df9c"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "A2.4 - Residents",
+          "item": [
+            {
+              "name": "A2.4.1 - Save Resident",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"firstName\": \"Test\",\r\n  \"lastName\": \"Resident\",\r\n  \"houseNumber\": \"TEST-002\",\r\n  \"phone\": \"0780000097\",\r\n  \"email\": \"testresident@example.com\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/residents/save",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "residents",
+                    "save"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "A2.4.2 - Get Resident by ID",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/residents/58def563-a615-4f0f-994e-4ff9c9886cf0",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "residents",
+                    "58def563-a615-4f0f-994e-4ff9c9886cf0"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "A2.4.3 - Update Resident",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"firstName\": \"Test\",\r\n  \"lastName\": \"Resident Updated\",\r\n  \"houseNumber\": \"TEST-002\",\r\n  \"phone\": \"0780000096\",\r\n  \"email\": \"updatedtest@example.com\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/residents/update/58def563-a615-4f0f-994e-4ff9c9886cf0",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "residents",
+                    "update",
+                    "58def563-a615-4f0f-994e-4ff9c9886cf0"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "A2.4.4 - Delete Resident",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/residents/delete/58def563-a615-4f0f-994e-4ff9c9886cf0",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "residents",
+                    "delete",
+                    "58def563-a615-4f0f-994e-4ff9c9886cf0"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "A2.5 - Collection Requests",
+          "item": [
+            {
+              "name": "A2.5.1 - Save Collection Request",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"requestDate\": \"2026-11-25\",\r\n  \"status\": \"SUBMITTED\",\r\n  \"location\": \"Test Collection Location\",\r\n  \"resident\": {\r\n    \"id\": \"6204fdd5-f012-4866-8818-368feaaaf1a7\"\r\n  },\r\n  \"collector\": {\r\n    \"id\": \"283c0b77-c6c3-4e75-8137-764d637cc7f6\"\r\n  }\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/collection-requests/save",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "collection-requests",
+                    "save"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "A2.5.2 - Get Collection Request by ID",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/collection-requests/60c128fa-c977-4af6-9e05-af7439bc8436",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "collection-requests",
+                    "60c128fa-c977-4af6-9e05-af7439bc8436"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "A2.5.3 - Update Collection Request",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"requestDate\": \"2026-11-25\",\r\n  \"status\": \"SUBMITTED\",\r\n  \"location\": \"Updated Test Collection Location\",\r\n  \"resident\": {\r\n    \"id\": \"6204fdd5-f012-4866-8818-368feaaaf1a7\"\r\n  },\r\n  \"collector\": {\r\n    \"id\": \"283c0b77-c6c3-4e75-8137-764d637cc7f6\"\r\n  }\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/collection-requests/update/60c128fa-c977-4af6-9e05-af7439bc8436",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "collection-requests",
+                    "update",
+                    "60c128fa-c977-4af6-9e05-af7439bc8436"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "A2.5.4 - Delete Collection Request",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": ""
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "A2.6 - Not Found Tests",
+          "item": [
+            {
+              "name": "A2.6.1 - Waste Type Not Found",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/waste-types/00000000-0000-0000-0000-000000000000",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "waste-types",
+                    "00000000-0000-0000-0000-000000000000"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "A2.6.2 - Collection Area Not Found",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/collection-areas/00000000-0000-0000-0000-000000000000",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "collection-areas",
+                    "00000000-0000-0000-0000-000000000000"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "A2.6.3 - Collector Not Found",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/collectors/00000000-0000-0000-0000-000000000000",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "collectors",
+                    "00000000-0000-0000-0000-000000000000"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "A2.6.4 - Resident Not Found",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/residents/00000000-0000-0000-0000-000000000000",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "residents",
+                    "00000000-0000-0000-0000-000000000000"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "A2.6.5 - Collection Request Not Found",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/collection-requests/00000000-0000-0000-0000-000000000000",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "collection-requests",
+                    "00000000-0000-0000-0000-000000000000"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "B - Derived Queries",
+      "item": [
+        {
+          "name": "B1 — Find residents by last name",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/residents/by-last-name?lastName=uwera",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "residents",
+                "by-last-name"
+              ],
+              "query": [
+                {
+                  "key": "lastName",
+                  "value": "uwera"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "B2 — Find collection requests by status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/collection-requests/by-status?status=SUBMITTED",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "collection-requests",
+                "by-status"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "SUBMITTED"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "B3 — Find collection requests between dates",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/collection-requests/between?start=2026-10-01&end=2026-10-31",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "collection-requests",
+                "between"
+              ],
+              "query": [
+                {
+                  "key": "start",
+                  "value": "2026-10-01"
+                },
+                {
+                  "key": "end",
+                  "value": "2026-10-31"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "C - JPQL Queries",
+      "item": [
+        {
+          "name": "C2 - Find Free Collection Areas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "C3 - Find Unused Waste Types",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "C4 - Find Residents of Collector",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "C4 - Collector Not Found",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/residents/of-collector/00000000-0000-0000-0000-000000000000",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "residents",
+                "of-collector",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "C1 - Find Collectors by Waste Type",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "D - Business Rules",
+      "item": [
+        {
+          "name": "D1 - Safe Saving",
+          "item": [
+            {
+              "name": "D1.1 - Save Valid Collection Request",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"requestDate\": \"2026-11-25\",\r\n    \"location\": \"KK 15 AV 12\",\r\n    \"status\": \"CANCELLED\",\r\n    \"resident\": {\r\n        \"id\": \"6204fdd5-f012-4866-8818-368feaaaf1a7\"\r\n    },\r\n    \"collector\": {\r\n        \"id\": \"054b8189-0481-4729-8435-823c84cd0d97\"\r\n    }\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/collection-requests/save",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "collection-requests",
+                    "save"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "New Request",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": ""
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "D1 duplicate-date validation",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"requestDate\": \"2026-11-25\",\r\n    \"location\": \"KK 15 AV 12\",\r\n    \"resident\": {\r\n        \"id\": \"6204fdd5-f012-4866-8818-368feaaaf1a7\"\r\n    },\r\n    \"collector\": {\r\n        \"id\": \"054b8189-0481-4729-8435-823c84cd0d97\"\r\n    }\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/collection-requests/save",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "collection-requests",
+                    "save"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Test past-date validation",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"requestDate\": \"2026-10-30\",\r\n    \"location\": \"KK 15 AV 12\",\r\n    \"resident\": {\r\n        \"id\": \"6204fdd5-f012-4866-8818-368feaaaf1a7\"\r\n    },\r\n    \"collector\": {\r\n        \"id\": \"054b8189-0481-4729-8435-823c84cd0d97\"\r\n    }\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/collection-requests/save",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "collection-requests",
+                    "save"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "D2 - Status Flow",
+          "item": [
+            {
+              "name": "SUBMITTED to ASSIGNED",
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/collection-requests/dc753a07-b28a-4e69-a43e-e11975d71efe/status?status=ASSIGNED",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "collection-requests",
+                    "dc753a07-b28a-4e69-a43e-e11975d71efe",
+                    "status"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "ASSIGNED"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "ASSIGNED to COLLECTED",
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/collection-requests/dc753a07-b28a-4e69-a43e-e11975d71efe/status?status=ASSIGNED",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "collection-requests",
+                    "dc753a07-b28a-4e69-a43e-e11975d71efe",
+                    "status"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "ASSIGNED"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "D2 test — Cancellation",
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/collection-requests/089128aa-c4ef-49d8-9a52-981ca26e06d1/status?status=CANCELLED",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "collection-requests",
+                    "089128aa-c4ef-49d8-9a52-981ca26e06d1",
+                    "status"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "CANCELLED"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "D3 - Add Waste Type",
+          "item": [
+            {
+              "name": "D3.1 - Add Organic Waste Type to Evase",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/collectors/054b8189-0481-4729-8435-823c84cd0d97/waste-types/2bd32a05-abb4-457c-ac1d-ddfb7d93eacc",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "collectors",
+                    "054b8189-0481-4729-8435-823c84cd0d97",
+                    "waste-types",
+                    "2bd32a05-abb4-457c-ac1d-ddfb7d93eacc"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "D3.2 - Verify Collector Waste Types",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/collectors/all",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "collectors",
+                    "all"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "D3.3 - Prevent Duplicate Waste Type",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/collectors/054b8189-0481-4729-8435-823c84cd0d97/waste-types/2bd32a05-abb4-457c-ac1d-ddfb7d93eacc",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "collectors",
+                    "054b8189-0481-4729-8435-823c84cd0d97",
+                    "waste-types",
+                    "2bd32a05-abb4-457c-ac1d-ddfb7d93eacc"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "D4 - Change Collection Area",
+          "item": [
+            {
+              "name": "D4.1 - Change Evase Collection Area to Area 4",
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/collectors/054b8189-0481-4729-8435-823c84cd0d97/collection-area?areaNumber=4",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "collectors",
+                    "054b8189-0481-4729-8435-823c84cd0d97",
+                    "collection-area"
+                  ],
+                  "query": [
+                    {
+                      "key": "areaNumber",
+                      "value": "4"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "D4.2 - Verify Evase Collection Area",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": ""
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "D4.3 - Prevent Assigning an Occupied Area",
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/collectors/cfb5eb0e-225c-4cff-bb30-8d88e3ffde65/collection-area?areaNumber=4",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "collectors",
+                    "cfb5eb0e-225c-4cff-bb30-8d88e3ffde65",
+                    "collection-area"
+                  ],
+                  "query": [
+                    {
+                      "key": "areaNumber",
+                      "value": "4"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "D4.4 - Reject Nonexistent Collection Area",
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/collectors/054b8189-0481-4729-8435-823c84cd0d97/collection-area?areaNumber=99",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "collectors",
+                    "054b8189-0481-4729-8435-823c84cd0d97",
+                    "collection-area"
+                  ],
+                  "query": [
+                    {
+                      "key": "areaNumber",
+                      "value": "99"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "E1 — Save a waste record",
+      "item": [
+        {
+          "name": "E1.1 - Save Plastic Bottles Waste Record",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"materialName\": \"Plastic bottles\",\r\n  \"notes\": \"Sorted for recycling\",\r\n  \"weightKg\": 12\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/waste-records/save?collectionRequestId=dc753a07-b28a-4e69-a43e-e11975d71efe",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "waste-records",
+                "save"
+              ],
+              "query": [
+                {
+                  "key": "collectionRequestId",
+                  "value": "dc753a07-b28a-4e69-a43e-e11975d71efe"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "E1.2 - Save Waste Record - Invalid Request ID",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"materialName\": \"Plastic bottles\",\r\n  \"notes\": \"Sorted for recycling\",\r\n  \"weightKg\": 12\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/waste-records/save?collectionRequestId=aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "waste-records",
+                "save"
+              ],
+              "query": [
+                {
+                  "key": "collectionRequestId",
+                  "value": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "E1.3 - Reject Waste Record - Not Collected",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"materialName\": \"Plastic bottles\",\r\n  \"notes\": \"Sorted for recycling\",\r\n  \"weightKg\": 12\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/waste-records/save?collectionRequestId=ed744fae-6862-4d8b-a145-5ee9eed794a0",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "waste-records",
+                "save"
+              ],
+              "query": [
+                {
+                  "key": "collectionRequestId",
+                  "value": "ed744fae-6862-4d8b-a145-5ee9eed794a0"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "E2.1 - Get Alex Waste Records",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/waste-records/resident/KK%2015%20AV%2012",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "waste-records",
+                "resident",
+                "KK%2015%20AV%2012"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "E3.1 - Prevent Deleting Request With Waste Records",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/collection-requests/delete/dc753a07-b28a-4e69-a43e-e11975d71efe",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "collection-requests",
+                "delete",
+                "dc753a07-b28a-4e69-a43e-e11975d71efe"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "E3.2 - Delete Waste Record",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/waste-records/delete/4c1b5756-4a0c-4339-bff5-d5d77c985d6c",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "waste-records",
+                "delete",
+                "4c1b5756-4a0c-4339-bff5-d5d77c985d6c"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "E3.3 - Delete Nonexistent Waste Record",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/waste-records/delete/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "waste-records",
+                "delete",
+                "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "F1 - Collection Requests Per Status",
+      "item": [
+        {
+          "name": "F1 - Collection Requests Per Status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/collection-requests/stats/by-status",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "collection-requests",
+                "stats",
+                "by-status"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "F2 - Cancel Collection Requests for Absent Collectoruest",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/collection-requests/cancel-day?collectorId=cfb5eb0e-225c-4cff-bb30-8d88e3ffde65&date=2026-10-20",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "collection-requests",
+                "cancel-day"
+              ],
+              "query": [
+                {
+                  "key": "collectorId",
+                  "value": "cfb5eb0e-225c-4cff-bb30-8d88e3ffde65"
+                },
+                {
+                  "key": "date",
+                  "value": "2026-10-20"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "F2 - Verify Cancelled Request",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/collection-requests/bddac71f-8438-48ef-885a-2b6d0e5cbd4c",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "collection-requests",
+                "bddac71f-8438-48ef-885a-2b6d0e5cbd4c"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "BONUS 1 - EcoTrack Dashboard",
+      "item": [
+        {
+          "name": "BONUS 1 - EcoTrack Dashboard",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/dashboard/summary",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "dashboard",
+                "summary"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "BONUS 2 - Collection Requests Pagination",
+      "item": [
+        {
+          "name": "BONUS 2 - Collection Requests Pagination",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/collection-requests/page",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "collection-requests",
+                "page"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
